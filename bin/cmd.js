@@ -20,7 +20,10 @@ var ecstatic = require('ecstatic')(__dirname + '/../static');
 var server = http.createServer(function (req, res) {
     ecstatic(req, res);
 });
-server.listen(5001);
+server.listen(0, function () {
+    var href = 'http://localhost:' + server.address().port;
+    spawn('google-chrome', [ '--app=' + href ]);
+});
 
 var freqs = spawn(process.execPath, [ __filename, 'freqs' ]);
 process.stdin.pipe(freqs.stdin);
