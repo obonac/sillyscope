@@ -1,6 +1,6 @@
 # sillyscope
 
-silly oscilloscope
+oscilloscope and spectroscope that reads from stdin
 
 # example
 
