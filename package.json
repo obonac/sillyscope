@@ -1,0 +1,37 @@
+{
+    "name": "sillyscope",
+    "version": "0.0.0",
+    "description": "silly oscilloscope",
+    "main": "index.js",
+    "bin": {
+        "sillyscope": "bin/cmd.js"
+    },
+    "dependencies": {
+        "ndarray": "~0.2.4",
+        "ndarray-fft": "~0.0.2",
+        "optimist": "~0.5.2",
+        "gamma": "~0.1.0",
+        "through": "~2.3.4",
+        "ecstatic": "~0.4.2",
+        "shoe": "~0.0.11",
+        "block-stream": "~0.0.6",
+        "split": "~0.2.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/substack/sillyscope.git"
+    },
+    "homepage": "https://github.com/substack/sillyscope",
+    "keywords": [
+        "oscilloscope",
+        "fft",
+        "spectroscope",
+        "frequency"
+    ],
+    "author": {
+        "name": "James Halliday",
+        "email": "mail@substack.net",
+        "url": "http://substack.net"
+    },
+    "license": "MIT"
+}
