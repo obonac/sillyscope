@@ -12,6 +12,8 @@ $ sox look_around_you.mp3 -c1 -r44k -t f32 - | sillyscope
 
 you will get a live scanning spectroscope in a chromeless chrome window.
 
+![sillyscope spectrogram](http://substack.net/images/sillyscope_spectrogram.png)
+
 # limitations
 
 Only supports 32-bit float input right now.
