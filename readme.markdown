@@ -1,5 +1,4 @@
-# ansiscope
+# sillyscope
 
-command-line ansi oscilloscope
-
+silly command-line oscilloscope
 
