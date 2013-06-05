@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
 var silly = require('../');
-var argv = require('optimist').argv;
 var http = require('http');
 var shoe = require('shoe');
 var spawn = require('child_process').spawn;
 var split = require('split');
 
+var argv = require('optimist').argv;
+
 if (argv._[0] === 'freqs') {
-    var scope = silly();
+    var scope = silly(argv);
+    
     scope.on('frequencies', function (freqs) {
         console.log(JSON.stringify(freqs));
     });
@@ -25,7 +27,10 @@ server.listen(0, function () {
     spawn('google-chrome', [ '--app=' + href ]);
 });
 
-var freqs = spawn(process.execPath, [ __filename, 'freqs' ]);
+var freqs = spawn(
+    process.execPath,
+    [ __filename, 'freqs' ].concat(process.argv.slice(2))
+);
 process.stdin.pipe(freqs.stdin);
 
 var lines = freqs.stdout.pipe(split());
