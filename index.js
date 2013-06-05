@@ -6,7 +6,7 @@ var through = require('through');
 exports = module.exports = function (opts) {
     if (!opts) opts = {};
     if (!opts.rate) opts.rate = 44000;
-    if (!opts.samples) opts.samples = opts.rate / 4;
+    if (!opts.samples) opts.samples = opts.rate / 8;
     
     var floats = new Float32Array(opts.samples);
     var size = floats.BYTES_PER_ELEMENT;
