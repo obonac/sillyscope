@@ -1,7 +1,6 @@
 var shoe = require('shoe');
 var stream = shoe('/sock');
 var through = require('through');
-var gamma = require('gamma');
 
 var canvas = document.createElement('canvas');
 canvas.setAttribute('width', window.innerWidth);
@@ -16,7 +15,7 @@ stream.pipe(through(function (line) {
     var output = ctx.createImageData(1, canvas.height);
     
     rows.forEach(function (row, i) {
-        var x = clamp(gamma(row[1]) / 10);
+        var x = clamp(Math.pow(row[1], 2));
         var j = i * 4;
         output.data[j] = output.data[j+1] = output.data[j+2] = x;
         output.data[j+3] = 255;
