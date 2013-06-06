@@ -16,7 +16,7 @@ stream.pipe(through(function (line) {
     var dy = canvas.height / Math.log(canvas.height + 1) * Math.log(2);
     
     rows.forEach(function (row, i) {
-        var x = clamp(Math.pow(row[1], 2));
+        var x = clamp(row[1]);
         var y = Math.floor(dy * Math.log(i + 1) / Math.log(2));
         var y_ = Math.floor(dy * Math.log(i + 2) / Math.log(2));
         for (var j = y * 4; j <= y_ * 4; j += 4) {

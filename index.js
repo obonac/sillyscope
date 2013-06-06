@@ -2,6 +2,7 @@ var ndarray = require('ndarray');
 var fft = require('ndarray-fft');
 var BlockStream = require('block-stream');
 var through = require('through');
+var mag = require('ndarray-complex').mag;
 
 exports = module.exports = function (opts) {
     if (!opts) opts = {};
@@ -23,14 +24,15 @@ exports = module.exports = function (opts) {
 
 function findFrequencies (floats, opts) {
     var reals = ndarray(floats, [ floats.length, 1 ]);
-    var imns = ndarray.zeros([ floats.length, 1 ]);
+    var imags = ndarray.zeros([ floats.length, 1 ]);
     
-    fft(1, reals, imns);
+    fft(1, reals, imags);
+    mag(reals, reals, imags);
     
     var freqs = [];
     for (var i = 0; i < reals.data.length; i++) {
         var freq = i * opts.rate / floats.length;
-        freqs.push([ freq, imns.data[i] ]);
+        freqs.push([ freq, reals.data[i] ]);
     }
     return freqs;
 }

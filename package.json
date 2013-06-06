@@ -8,6 +8,7 @@
     },
     "dependencies": {
         "ndarray": "~0.2.4",
+        "ndarray-complex": "~0.0.1",
         "ndarray-fft": "~0.0.2",
         "optimist": "~0.5.2",
         "gamma": "~0.1.0",
