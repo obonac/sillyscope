@@ -8,6 +8,7 @@ exports = module.exports = function (opts) {
     if (!opts) opts = {};
     if (!opts.rate) opts.rate = 44000;
     if (!opts.samples) opts.samples = opts.rate / 8;
+    if (!opts.range) opts.range = [ 0, 44000 ];
     
     var floats = new Float32Array(opts.samples);
     var size = floats.BYTES_PER_ELEMENT;
@@ -32,7 +33,9 @@ function findFrequencies (floats, opts) {
     var freqs = [];
     for (var i = 0; i < reals.data.length; i++) {
         var freq = i * opts.rate / floats.length;
-        freqs.push([ freq, reals.data[i] ]);
+        if (freq >= opts.range[0] && freq <= opts.range[1]) {
+            freqs.push([ freq, reals.data[i] ]);
+        }
     }
     return freqs;
 }
