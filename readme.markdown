@@ -7,7 +7,7 @@ oscilloscope and spectroscope that reads from stdin
 If you type:
 
 ```
-$ sox look_around_you.mp3 -c1 -r44k -t f32 - | sillyscope
+$ sox look_around_you.mp3 -c1 -r44k -t f32 - | sillyscope --range=100-20k
 ```
 
 you will get a live scanning spectroscope in a chromeless chrome window.
