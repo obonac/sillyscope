@@ -1,19 +1,27 @@
 #!/usr/bin/env node
 
-var silly = require('../');
 var http = require('http');
 var shoe = require('shoe');
 var spawn = require('child_process').spawn;
 var split = require('split');
+var fs = require('fs');
 
 var argv = require('optimist').argv;
-var range = (argv.range || '0-44000').replace(/k/g, '000').split('-').map(Number);
+if (argv._[0] === 'help' || argv.help || argv.h) {
+    return fs.createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
+}
+
+var range = String(addKilo(argv.range || '0-44000')).split('-').map(Number);
 if (!range[0]) range[0] = 0;
 if (!range[1]) range[1] = 44000;
 
 if (argv._[0] === 'freqs') {
-    argv.range = range;
-    var scope = silly(argv);
+    var silly = require('../');
+    var scope = silly({
+        range: range,
+        rate: addKilo(argv.rate),
+        samples: addKilo(argv.samples)
+    });
     
     scope.on('frequencies', function (freqs) {
         console.log(JSON.stringify(freqs));
@@ -45,3 +53,7 @@ var sock = shoe(function (stream) {
     lines.pipe(stream);
 });
 sock.install(server, '/sock');
+
+function addKilo (s) {
+    return s && Number(String(s).replace(/k/g, '000'));
+}

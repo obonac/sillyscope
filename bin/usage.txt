@@ -1,0 +1,19 @@
+usage: sillyscope OPTIONS
+
+  where OPTIONS are:
+
+    --range=START-END
+    
+      Limit the vertical axis between START and END in Hz.
+      You can use `k` as short-hand for 1000s. Default: 0-44k.
+
+    --rate=RATE
+
+      Expect RATE bytes per second as input. Default: 44k.
+
+    --samples=SAMPLES
+
+      Use SAMPLE many samples each sweep of the fft.
+      More samples will be slower but higher resolution.
+      Default: 11k.
+
