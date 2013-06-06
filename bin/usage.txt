@@ -1,5 +1,7 @@
 usage: sillyscope OPTIONS
 
+  Show a scanning spectrograph from 32-bit little-endian float data from stdin.
+
   where OPTIONS are:
 
     --range=START-END
